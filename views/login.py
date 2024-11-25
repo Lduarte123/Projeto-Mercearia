@@ -10,6 +10,9 @@ class LoginApp(ctk.CTk):
     def __init__(self):
         super().__init__()
 
+        self.correct_username = "admin"
+        self.correct_password = "123"
+
         # Configurações da janela principal
         self.title("Login")
         self.attributes("-fullscreen", True)
@@ -41,8 +44,16 @@ class LoginApp(ctk.CTk):
         self.label_footer.pack(side="bottom", pady=10)
 
     def validate_login(self):
+        # Obtendo os valores inseridos pelo usuário
+        username = self.entry_user.get()
+        password = self.entry_password.get()
+
         # Lógica para validar login
-        print("Validando login...")
+        if username == self.correct_username and password == self.correct_password:
+            showinfo("Login", "Login bem-sucedido!")
+        else:
+            showinfo("Erro", "Usuário ou senha incorretos.")
 
     def exit_fullscreen(self):
         self.attributes("-fullscreen", False)
+
